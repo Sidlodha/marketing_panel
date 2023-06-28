@@ -1,13 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { PartnerDetails } from './context';
+
+function Final(){
+  const [businessName, setBusinessName] = useState("");
+  const [whatsappName, setWhatsappName] = useState("");
+  const [appLink, setAppLink] = useState("");
+  const [websiteLink, setWebsiteLink] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  return (
+    <PartnerDetails.Provider value={{
+      businessName,
+      setBusinessName,
+      whatsappName,
+      setWhatsappName,
+      appLink,
+      setAppLink,
+      websiteLink,
+      setWebsiteLink,
+      phoneNumber,  
+      setPhoneNumber
+    }}>
+      <App />
+    </PartnerDetails.Provider>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Final />
   </React.StrictMode>
 );
 
